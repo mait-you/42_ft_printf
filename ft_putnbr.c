@@ -6,7 +6,7 @@
 /*   By: mait-you <mait-you@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 14:33:13 by mait-you          #+#    #+#             */
-/*   Updated: 2024/11/20 11:50:17 by mait-you         ###   ########.fr       */
+/*   Updated: 2024/11/27 19:40:11 by mait-you         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,10 @@ static int	ft_putnbr_recursive(int nb)
 	if (nb >= 10)
 	{
 		re_value += ft_putnbr_recursive(nb / 10);
-		if (re_value == -1)
-			return (-1);
 		re_value += ft_putnbr_recursive(nb % 10);
-		if (re_value == -1)
-			return (-1);
 	}
 	else
-	{
-		re_value += ft_putchar(nb + '0');
-		if (re_value == -1)
-			return (-1);
-	}
+		re_value += ft_putchr(nb + '0');
 	return (re_value);
 }
 
@@ -44,9 +36,7 @@ int	ft_putnbr(int nb)
 		return (ft_putstr("-2147483648"));
 	if (nb < 0)
 	{
-		re_value += ft_putchar('-');
-		if (re_value == -1)
-			return (-1);
+		re_value += ft_putchr('-');
 		nb = -nb;
 	}
 	re_value += ft_putnbr_recursive(nb);
